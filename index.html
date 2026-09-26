@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Valeri Zhu | Portfolio</title>
+
+  <style>
+    /* =========================
+       GENERAL
+    ========================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f8f7f4;
+      color: #171717;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* =========================
+       NAVIGATION
+    ========================= */
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 20px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(248, 247, 244, 0.92);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-bottom: 1px solid #e5e3df;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      letter-spacing: -1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      opacity: 0.5;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 100vh;
+      padding: 160px 7% 80px;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-content {
+      max-width: 900px;
+    }
+
+    .small-text {
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 13px;
+      color: #777;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(60px, 10vw, 130px);
+      line-height: 0.9;
+      letter-spacing: -7px;
+      margin-bottom: 35px;
+    }
+
+    .hero h1 span {
+      color: #777;
+    }
+
+    .hero-description {
+      max-width: 600px;
+      font-size: 20px;
+      color: #555;
+      margin-bottom: 35px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 14px 25px;
+      background: #171717;
+      color: white;
+      border-radius: 30px;
+      transition: 0.3s;
+      font-size: 14px;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      background: #444;
+    }
+
+    /* =========================
+       SECTIONS
+    ========================= */
+
+    section {
+      padding: 120px 7%;
+    }
+
+    .section-title {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #777;
+      margin-bottom: 50px;
+    }
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about {
+      background: #171717;
+      color: white;
+    }
+
+    .about-container {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 80px;
+      max-width: 1200px;
+    }
+
+    .about h2 {
+      font-size: 50px;
+      line-height: 1;
+      letter-spacing: -2px;
+    }
+
+    .about p {
+      font-size: 20px;
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+
+    /* =========================
+       EXPERIENCE
+    ========================= */
+
+    .experience-container {
+      max-width: 1100px;
+    }
+
+    .experience-item {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 50px;
+      padding: 35px 0;
+      border-top: 1px solid #d8d6d2;
+    }
+
+    .experience-item:last-child {
+      border-bottom: 1px solid #d8d6d2;
+    }
+
+    .experience-date {
+      color: #777;
+      font-size: 14px;
+    }
+
+    .experience-item h3 {
+      font-size: 28px;
+      margin-bottom: 5px;
+    }
+
+    .experience-item h4 {
+      color: #777;
+      font-weight: normal;
+      margin-bottom: 15px;
+    }
+
+    .experience-item p {
+      color: #555;
+      max-width: 700px;
+    }
+
+    /* =========================
+       PROJECTS
+    ========================= */
+
+    .projects {
+      background: #e9e7e2;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+
+    .project-card {
+      background: #f8f7f4;
+      padding: 40px;
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-7px);
+    }
+
+    .project-number {
+      font-size: 14px;
+      color: #888;
+    }
+
+    .project-card h3 {
+      font-size: 35px;
+      margin: 40px 0 15px;
+    }
+
+    .project-card p {
+      color: #666;
+    }
+
+    .project-link {
+      margin-top: 30px;
+      font-size: 14px;
+      text-decoration: underline;
+    }
+
+    /* =========================
+       SKILLS
+    ========================= */
+
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      max-width: 900px;
+    }
+
+    .skill {
+      border: 1px solid #ccc;
+      padding: 12px 20px;
+      border-radius: 30px;
+      font-size: 14px;
+      background: white;
+    }
+
+    /* =========================
+       EDUCATION
+    ========================= */
+
+    .education {
+      background: #171717;
+      color: white;
+    }
+
+    .education-container {
+      max-width: 900px;
+    }
+
+    .education h2 {
+      font-size: 55px;
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .education p {
+      color: #bbb;
+      font-size: 18px;
+    }
+
+    /* =========================
+       CONTACT
+    ========================= */
+
+    .contact {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .contact h2 {
+      font-size: clamp(55px, 9vw, 110px);
+      line-height: 0.9;
+      letter-spacing: -5px;
+      margin-bottom: 40px;
+    }
+
+    .contact-info {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .contact-info a {
+      border-bottom: 1px solid #171717;
+      padding-bottom: 5px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      padding: 30px 7%;
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid #ddd;
+      font-size: 13px;
+      color: #777;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 768px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 130px;
+      }
+
+      .hero h1 {
+        font-size: 65px;
+        letter-spacing: -4px;
+      }
+
+      .hero-description {
+        font-size: 17px;
+      }
+
+      section {
+        padding: 80px 6%;
+      }
+
+      .about-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .experience-item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-card h3 {
+        font-size: 30px;
+      }
+
+      .education h2 {
+        font-size: 45px;
+      }
+
+      .contact h2 {
+        font-size: 60px;
+        letter-spacing: -3px;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       NAVIGATION
+  ========================= -->
+
+  <nav>
+    <div class="logo">VZ.</div>
+
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- =========================
+       HERO
+  ========================= -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <div class="small-text">
+        Marketing · Media · Entertainment
+      </div>
+
+      <h1>
+        Hi, I'm<br>
+        Valeri<span>.</span>
+      </h1>
+
+      <p class="hero-description">
+        I'm a Rutgers University student passionate about marketing,
+        media, and creating experiences that connect people with brands.
+      </p>
+
+      <a href="#experience" class="button">
+        Explore my work ↓
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       ABOUT
+  ========================= -->
+
+  <section class="about" id="about">
+
+    <div class="section-title">
+      About Me
+    </div>
+
+    <div class="about-container">
+
+      <h2>
+        Curious.<br>
+        Creative.<br>
+        Driven.
+      </h2>
+
+      <div>
+
+        <p>
+          I'm currently studying at Rutgers University with an interest
+          in marketing, business, and the media and entertainment industry.
+        </p>
+
+        <p>
+          I enjoy working at the intersection of creativity and business —
+          whether that's developing marketing ideas, working with brands,
+          planning events, or finding new ways to connect with audiences.
+        </p>
+
+        <p>
+          My long-term goal is to build a career in a major entertainment
+          or media company while continuing to grow as a marketer,
+          strategist, and leader.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       EXPERIENCE
+  ========================= -->
+
+  <section id="experience">
+
+    <div class="section-title">
+      Experience
+    </div>
+
+    <div class="experience-container">
+
+      <!-- EXPERIENCE 1 -->
+
+      <div class="experience-item">
+
+        <div class="experience-date">
+          2026 — Present
+        </div>
+
+        <div>
+
+          <h3>Silvercast Media</h3>
+
+          <h4>Fall Intern</h4>
+
+          <p>
+            Supporting advertising and media projects involving major
+            brands and iconic media locations in New York City.
+            Working across marketing, client projects, research,
+            and day-to-day team operations.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- EXPERIENCE 2 -->
+
+      <div class="experience-item">
+
+        <div class="experience-date">
+          2026
+        </div>
+
+        <div>
+
+          <h3>Misaeng</h3>
+
+          <h4>Partnership & Operations Intern</h4>
+
+          <p>
+            Worked on partnerships, marketing outreach, and operations
+            within the NYC real estate market. Supported creator outreach,
+            rental marketing, and customer connections.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- EXPERIENCE 3 -->
+
+      <div class="experience-item">
+
+        <div class="experience-date">
+          Rutgers University
+        </div>
+
+        <div>
+
+          <h3>TASA</h3>
+
+          <h4>Fundraising Chair</h4>
+
+          <p>
+            Developing sponsorship opportunities and outreach strategies
+            while helping organize cultural and social events for the
+            Rutgers community.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       PROJECTS
+  ========================= -->
+
+  <section class="projects" id="projects">
+
+    <div class="section-title">
+      Selected Work
+    </div>
+
+    <div class="project-grid">
+
+      <div class="project-card">
+
+        <div class="project-number">
+          01 / MARKETING
+        </div>
+
+        <div>
+
+          <h3>
+            Brand & Marketing
+          </h3>
+
+          <p>
+            Marketing projects, campaign concepts, brand research,
+            and strategic ideas developed through coursework and
+            professional experiences.
+          </p>
+
+          <a href="#" class="project-link">
+            View project →
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="project-card">
+
+        <div class="project-number">
+          02 / MEDIA
+        </div>
+
+        <div>
+
+          <h3>
+            Media & Advertising
+          </h3>
+
+          <p>
+            Exploring the intersection of brands, advertising,
+            entertainment, and media experiences.
+          </p>
+
+          <a href="#" class="project-link">
+            View project →
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="project-card">
+
+        <div class="project-number">
+          03 / EVENTS
+        </div>
+
+        <div>
+
+          <h3>
+            Event Planning
+          </h3>
+
+          <p>
+            Experience creating and supporting student events,
+            performances, sponsorship opportunities, and
+            audience experiences.
+          </p>
+
+          <a href="#" class="project-link">
+            View project →
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="project-card">
+
+        <div class="project-number">
+          04 / BUSINESS
+        </div>
+
+        <div>
+
+          <h3>
+            Business Strategy
+          </h3>
+
+          <p>
+            Coursework and projects involving supply chain,
+            business operations, client analysis, and strategic
+            decision-making.
+          </p>
+
+          <a href="#" class="project-link">
+            View project →
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       SKILLS
+  ========================= -->
+
+  <section>
+
+    <div class="section-title">
+      Skills & Interests
+    </div>
+
+    <div class="skills-container">
+
+      <div class="skill">Marketing</div>
+      <div class="skill">Brand Strategy</div>
+      <div class="skill">Social Media</div>
+      <div class="skill">Event Planning</div>
+      <div class="skill">Business Strategy</div>
+      <div class="skill">Market Research</div>
+      <div class="skill">Client Relations</div>
+      <div class="skill">Project Management</div>
+      <div class="skill">Microsoft Word</div>
+      <div class="skill">PowerPoint</div>
+      <div class="skill">Excel</div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       EDUCATION
+  ========================= -->
+
+  <section class="education">
+
+    <div class="section-title">
+      Education
+    </div>
+
+    <div class="education-container">
+
+      <h2>
+        Rutgers<br>
+        University
+      </h2>
+
+      <p>
+        New Brunswick, New Jersey
+      </p>
+
+      <p>
+        Undergraduate Student · Business
+      </p>
+
+      <br>
+
+      <p>
+        Interested in marketing, media, entertainment,
+        business strategy, and supply chain management.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       CONTACT
+  ========================= -->
+
+  <section class="contact" id="contact">
+
+    <div>
+
+      <div class="section-title">
+        Get in touch
+      </div>
+
+      <h2>
+        Let's<br>
+        connect<span>.</span>
+      </h2>
+
+      <div class="contact-info">
+
+        <!-- CHANGE THESE -->
+
+        <a href="mailto:YOUR_EMAIL@example.com">
+          Email
+        </a>
+
+        <a href="https://www.linkedin.com/" target="_blank">
+          LinkedIn
+        </a>
+
+        <a href="#" target="_blank">
+          Resume
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer>
+
+    <div>
+      © 2026 Valeri Zhu
+    </div>
+
+    <div>
+      Built with HTML & CSS
+    </div>
+
+  </footer>
+
+
+</body>
+</html>
